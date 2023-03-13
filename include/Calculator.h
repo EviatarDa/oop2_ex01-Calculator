@@ -8,8 +8,9 @@ enum Functions { EVAL, SUBSTR, MUL, ADD, COMP, DEL, HELP, EXIT };
 class Calculator
 {
 public:
+	Calculator();
 	void run();
-
+	void PrintFunctions();
 
 private:
 	//todo change

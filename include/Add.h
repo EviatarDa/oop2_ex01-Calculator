@@ -1,9 +1,10 @@
 #pragma once
+#include "Function.h"
 
-class Add
+class Add :public Function
 {
 public:
-	
+	void Operation();
 
 private:
 

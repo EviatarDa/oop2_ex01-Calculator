@@ -1,9 +1,10 @@
 #pragma once 
+#include "Function.h"
 
-class Substr
+class Substr :public Function
 {
 public:
-
+	void Operation();
 
 private:
 

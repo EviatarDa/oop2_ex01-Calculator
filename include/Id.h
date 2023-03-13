@@ -1,9 +1,10 @@
 #pragma once
 #include "Function.h"
 
-class Mul :public Function
+class Id :public Function
 {
 public:
+	Id(std::string, int);
 	void Operation();
 
 private:

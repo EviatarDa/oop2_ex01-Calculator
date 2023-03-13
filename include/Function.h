@@ -7,8 +7,8 @@ public:
 	Function(std::string, int);
 	int GetNumber() const;
 	void SetNumber(int);
-	std::string GetName();
-	virtual void Operation() override;
+	std::string GetName() const;
+	virtual void Operation() = 0;
 
 private:
 	std::string m_name;

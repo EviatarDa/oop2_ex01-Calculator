@@ -16,7 +16,7 @@ void Function::SetNumber(int num)
 	m_number = num;
 }
 
-std::string Function::GetName()
+std::string Function::GetName() const
 {
 	return m_name;
 }

@@ -1,9 +1,10 @@
 #pragma once
 #include "Function.h"
 
-class Mul :public Function
+class SwapCase :public Function
 {
 public:
+	SwapCase(std::string, int);
 	void Operation();
 
 private:

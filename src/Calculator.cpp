@@ -1,18 +1,34 @@
 #pragma once
 #include "Calculator.h"
+#include "Id.h"
+#include "SwapCase.h"
+#include "Reverse.h"
+#include "Substr.h"
+#include "Mul.h"
+#include "Add.h"
+#include "Comp.h"
+#include "Del.h"
 
+
+Calculator::Calculator()
+{
+	m_functions.push_back(std::make_shared<Id>("Id",0));
+	m_functions.push_back(std::make_shared<SwapCase>("SwapCase",1));
+	m_functions.push_back(std::make_shared<Reverse>("Reverse",2));
+}
 
 void Calculator::run()
 {
 	while (!m_exit)
 	{
-		std::cout << "List of available string operations: " << std::endl;
-		//PrintFunctions();
+		std::cout << "\nList of available string operations: " << std::endl;
+		PrintFunctions();
 		std::cin >> m_operation;
 		switch (String2Enum())
 		{
 		case EVAL:
 			std::cin >> m_num1;
+			m_functions[m_num1]->Operation();
 			break;
 		case SUBSTR:
 			std::cin >> m_num1 >> m_num2;
@@ -41,6 +57,15 @@ void Calculator::run()
 		}
 
 	}
+}
+
+void Calculator::PrintFunctions()
+{
+	for (int index = 0; index < m_functions.size(); index++)
+	{
+		std::cout << m_functions[index]->GetNumber() << ". " << m_functions[index]->GetName() << std::endl;
+	}
+	std::cout << "\n\nEnter command ('help' for the list of available commands): ";
 }
 
 enum Functions Calculator::String2Enum() const
