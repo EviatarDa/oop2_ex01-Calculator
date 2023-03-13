@@ -4,7 +4,7 @@
 class Add :public Function
 {
 public:
-	void Operation();
+	void Operation(std::string str);
 
 private:
 

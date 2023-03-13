@@ -6,14 +6,14 @@ Reverse::Reverse(std::string name, int num)
 {
 }
 
-void Reverse::Operation()
+void Reverse::Operation(std::string str)
 {
-	std::string str;
-	std::cin >> str;
 
-	std::cout << "Reverse(" << str << ") = ";
-	
+	std::cout << "Reverse(" << str << ") = " << ChangedString(str) << std::endl;
+}
+
+std::string Reverse::ChangedString(std::string str)
+{
 	reverse(str.begin(), str.end());
-	
-	std::cout << str << std::endl;
+	return str;
 }

@@ -27,31 +27,52 @@ void Calculator::run()
 		switch (String2Enum())
 		{
 		case EVAL:
+		{
 			std::cin >> m_num1;
-			m_functions[m_num1]->Operation();
+			std::string str;
+			std::cin >> str;
+			m_functions[m_num1]->Operation(str);
+
 			break;
+		}
+
 		case SUBSTR:
+		{
 			std::cin >> m_num1 >> m_num2;
+			std::string func_name = "Substr " + std::to_string(m_num1) + ", " + std::to_string(m_num2);
+			m_functions.push_back(std::make_shared<Substr>(func_name, m_functions.size() , m_num1, m_num2));
 			break;
+		}
+
 		case MUL:
+		{
 			std::cin >> m_num1 >> m_num2;
+			std::string func_name =  "(" + FindFunc(m_num1)->GetName() +  " * " + std::to_string(m_num2) + ")";
+			m_functions.push_back(std::make_shared<Mul>(func_name, m_functions.size(), m_num1, m_num2, FindFunc(m_num1)));
 			break;
+		}
+
 		case ADD:
 			std::cin >> m_num1 >> m_num2;
 			break;
+
 		case COMP:
 			std::cin >> m_num1 >> m_num2;
 			break;
+
 		case DEL:
 			std::cin >> m_num1;
 			break;
+
 		case HELP:
 			PrintHelp();
 			break;
+
 		case EXIT:
 			m_exit = true;
 			std::cout << "Goodbye\n";
 			break;
+
 		default:
 			break;
 		}
@@ -106,5 +127,19 @@ void Calculator::PrintHelp() const
 		" * del(ete) num - delete operation #num from the operation list\n\n"
 		" * help - print this command list\n\n"
 		" * exit - exit the program\n\n\n";
+}
+
+std::shared_ptr<Function> Calculator::FindFunc(int num) const
+{
+	std::shared_ptr<Function> ptr;
+	for (int index = 0; index < m_functions.size(); index++)
+	{
+		if (m_functions[index]->GetNumber() == num)
+		{
+			ptr = m_functions[index];
+			return ptr;
+		}
+	}
+	
 }
 

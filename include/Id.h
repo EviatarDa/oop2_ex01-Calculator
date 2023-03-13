@@ -5,7 +5,8 @@ class Id :public Function
 {
 public:
 	Id(std::string, int);
-	void Operation();
+	void Operation(std::string str);
+	std::string ChangedString(std::string str);
 
 private:
 

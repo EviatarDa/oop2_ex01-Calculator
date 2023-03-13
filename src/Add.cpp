@@ -1,6 +1,6 @@
 #pragma once 
 #include "Add.h"
 
-void Add::Operation()
+void Add::Operation(std::string str)
 {
 }

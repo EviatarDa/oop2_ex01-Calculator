@@ -1,6 +1,6 @@
 #pragma once 
 #include "Comp.h"
 
-void Comp::Operation()
+void Comp::Operation(std::string str)
 {
 }

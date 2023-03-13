@@ -6,12 +6,13 @@ SwapCase::SwapCase(std::string name, int num)
 {
 }
 
-void SwapCase::Operation()
+void SwapCase::Operation(std::string str)
 {
-	std::string str;
-	std::cin >> str;
-	std::cout << "SwapCase(" << str << ") = ";
+	std::cout << "SwapCase(" << str << ") = " << ChangedString(str) << std::endl;
+}
 
+std::string SwapCase::ChangedString(std::string str)
+{
     int ln = str.length();
 
     // Conversion according to ASCII values
@@ -23,6 +24,5 @@ void SwapCase::Operation()
             // Convert uppercase to lowercase
             str[i] = str[i] + 32;
     }
-
-	std::cout << str << std::endl;
+    return str;
 }

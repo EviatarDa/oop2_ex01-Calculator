@@ -4,9 +4,13 @@
 class Substr :public Function
 {
 public:
-	void Operation();
+	Substr(std::string, int, int, int);
+	void Operation(std::string str);
+	std::string ChangedString(std::string str);
+
 
 private:
-
+	int m_start;
+	int m_end;
 };
 

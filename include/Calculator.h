@@ -1,8 +1,8 @@
 #pragma once
 
-
 #include <vector>
 #include "Function.h"
+#include <string>
 enum Functions { EVAL, SUBSTR, MUL, ADD, COMP, DEL, HELP, EXIT };
 
 class Calculator
@@ -13,7 +13,6 @@ public:
 	void PrintFunctions();
 
 private:
-	//todo change
 	std::vector <std::shared_ptr <Function> > m_functions;
 	bool m_exit = false;
 	std::string m_operation;
@@ -23,5 +22,6 @@ private:
 
 	//functions:
 	void PrintHelp() const;
+	std::shared_ptr<Function> FindFunc(int) const;
 
 };

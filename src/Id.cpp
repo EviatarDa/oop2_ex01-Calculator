@@ -6,9 +6,12 @@ Id::Id(std::string name , int num)
 {
 }
 
-void Id::Operation()
+void Id::Operation(std::string str)
 {
-	std::string str;
-	std::cin >> str;
-	std::cout << "Id(" << str << ") = " << str << std::endl;
+	std::cout << "Id(" << str << ") = " << ChangedString(str) << std::endl;
+}
+
+std::string Id::ChangedString(std::string str)
+{
+	return str;
 }

@@ -8,7 +8,8 @@ public:
 	int GetNumber() const;
 	void SetNumber(int);
 	std::string GetName() const;
-	virtual void Operation() = 0;
+	virtual void Operation(std::string str) = 0;
+	virtual std::string ChangedString (std::string str) = 0;
 
 private:
 	std::string m_name;
