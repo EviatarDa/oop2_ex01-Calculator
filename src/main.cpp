@@ -3,4 +3,6 @@
 
 int main()
 {
+	Calculator c;
+	c.run();
 }
