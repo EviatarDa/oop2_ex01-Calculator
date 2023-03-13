@@ -13,6 +13,6 @@ void Substr::Operation(std::string str)
 
 std::string Substr::ChangedString(std::string str)
 {
-	str.substr(m_start, m_end);
-	return str;
+	std::string string = str.substr(m_start, m_end);
+	return string;
 }

@@ -1,8 +1,8 @@
 #pragma once 
 #include "Mul.h"
 
-Mul::Mul(std::string name, int num, int num1, int num2, std::shared_ptr<Function> ptr)
-	:Function(name, num), m_func(num1), m_amount(num2), m_ptr2func(ptr)
+Mul::Mul(std::string name, int num, int num1, std::shared_ptr<Function> ptr)
+	:Function(name, num), m_amount(num1), m_ptr2func(ptr)
 {
 }
 

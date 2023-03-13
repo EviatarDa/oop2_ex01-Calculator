@@ -47,22 +47,33 @@ void Calculator::run()
 		case MUL:
 		{
 			std::cin >> m_num1 >> m_num2;
-			std::string func_name =  "(" + FindFunc(m_num1)->GetName() +  " * " + std::to_string(m_num2) + ")";
-			m_functions.push_back(std::make_shared<Mul>(func_name, m_functions.size(), m_num1, m_num2, FindFunc(m_num1)));
+			std::string func_name =  "(" + FindFunc(m_num2)->GetName() +  " * " + std::to_string(m_num1) + ")";
+			m_functions.push_back(std::make_shared<Mul>(func_name, m_functions.size(), m_num1, FindFunc(m_num2)));
 			break;
 		}
 
 		case ADD:
+		{
 			std::cin >> m_num1 >> m_num2;
+			std::string func_name = "(" + FindFunc(m_num1)->GetName() + " + " + FindFunc(m_num2)->GetName() + ")";
+			m_functions.push_back(std::make_shared<Add>(func_name, m_functions.size(), FindFunc(m_num1), FindFunc(m_num2)));
 			break;
+		}
 
 		case COMP:
+		{
 			std::cin >> m_num1 >> m_num2;
+			std::string func_name = "(" + FindFunc(m_num1)->GetName() + " -> " + FindFunc(m_num2)->GetName() + ")";
+			m_functions.push_back(std::make_shared<Comp>(func_name, m_functions.size(), FindFunc(m_num1), FindFunc(m_num2)));
 			break;
+		}
 
 		case DEL:
+		{
 			std::cin >> m_num1;
+			FindFunc(m_num1) = nullptr;
 			break;
+		}
 
 		case HELP:
 			PrintHelp();

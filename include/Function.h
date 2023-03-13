@@ -11,7 +11,10 @@ public:
 	virtual void Operation(std::string str) = 0;
 	virtual std::string ChangedString (std::string str) = 0;
 
-private:
+protected:
 	std::string m_name;
+
+private:
+
 	int m_number;
 };
