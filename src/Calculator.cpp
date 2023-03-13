@@ -1,13 +1,10 @@
 #pragma once
 #include "Calculator.h"
 
-Calculator::Calculator()
-{
-}
 
 void Calculator::run()
 {
-	while (true)
+	while (!m_exit)
 	{
 		std::cout << "List of available string operations: " << std::endl;
 		//PrintFunctions();
@@ -18,7 +15,7 @@ void Calculator::run()
 			std::cin >> m_num1;
 			break;
 		case SUBSTR:
-			std::cin >> m_num1>>m_num2;
+			std::cin >> m_num1 >> m_num2;
 			break;
 		case MUL:
 			std::cin >> m_num1 >> m_num2;
@@ -38,10 +35,9 @@ void Calculator::run()
 		case EXIT:
 			m_exit = true;
 			std::cout << "Goodbye\n";
-			EXIT_SUCCESS;
 			break;
 		default:
-
+			break;
 		}
 
 	}
@@ -84,6 +80,6 @@ void Calculator::PrintHelp() const
 		"   operation #num1 and operation #num2\n\n"
 		" * del(ete) num - delete operation #num from the operation list\n\n"
 		" * help - print this command list\n\n"
-		" * exit - exit the program\n";
+		" * exit - exit the program\n\n\n";
 }
 
