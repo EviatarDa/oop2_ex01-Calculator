@@ -23,5 +23,6 @@ private:
 	//functions:
 	void PrintHelp() const;
 	std::shared_ptr<Function> GetP2Func(int) const;
+	bool CheckValid(int, int);
 
 };

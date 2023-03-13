@@ -28,49 +28,64 @@ void Calculator::run()
 		case EVAL:
 		{
 			std::cin >> m_num1;
-			std::string str;
-			std::cin >> str;
-			m_functions[m_num1]->Operation(str);
-
+			if(CheckValid(m_num1,0))
+			{
+				std::string str;
+				std::cin >> str;
+				m_functions[m_num1]->Operation(str);
+			}
 			break;
 		}
 
 		case SUBSTR:
 		{
 			std::cin >> m_num1 >> m_num2;
-			std::string func_name = "Substr " + std::to_string(m_num1) + ", " + std::to_string(m_num2);
-			m_functions.push_back(std::make_shared<Substr>(func_name , m_num1, m_num2));
+			if (CheckValid(m_num1, m_num2))
+			{
+				std::string func_name = "Substr " + std::to_string(m_num1) + ", " + std::to_string(m_num2);
+				m_functions.push_back(std::make_shared<Substr>(func_name, m_num1, m_num2));
+			}
 			break;
 		}
 
 		case MUL:
 		{
 			std::cin >> m_num1 >> m_num2;
-			std::string func_name =  "(" + GetP2Func(m_num2)->GetName() +  " * " + std::to_string(m_num1) + ")";
-			m_functions.push_back(std::make_shared<Mul>(func_name, m_num1, GetP2Func(m_num2)));
+			if (CheckValid(m_num1, m_num2))
+			{
+				std::string func_name = "(" + GetP2Func(m_num2)->GetName() + " * " + std::to_string(m_num1) + ")";
+				m_functions.push_back(std::make_shared<Mul>(func_name, m_num1, GetP2Func(m_num2)));
+			}
 			break;
 		}
 
 		case ADD:
 		{
 			std::cin >> m_num1 >> m_num2;
-			std::string func_name = "(" + GetP2Func(m_num1)->GetName() + " + " + GetP2Func(m_num2)->GetName() + ")";
-			m_functions.push_back(std::make_shared<Add>(func_name, GetP2Func(m_num1), GetP2Func(m_num2)));
+			if (CheckValid(m_num1, m_num2))
+			{
+				std::string func_name = "(" + GetP2Func(m_num1)->GetName() + " + " + GetP2Func(m_num2)->GetName() + ")";
+				m_functions.push_back(std::make_shared<Add>(func_name, GetP2Func(m_num1), GetP2Func(m_num2)));
+			}
 			break;
 		}
 
 		case COMP:
 		{
 			std::cin >> m_num1 >> m_num2;
-			std::string func_name = "(" + GetP2Func(m_num1)->GetName() + " -> " + GetP2Func(m_num2)->GetName() + ")";
-			m_functions.push_back(std::make_shared<Comp>(func_name, GetP2Func(m_num1), GetP2Func(m_num2)));
+			if (CheckValid(m_num1, m_num2))
+			{
+				std::string func_name = "(" + GetP2Func(m_num1)->GetName() + " -> " + GetP2Func(m_num2)->GetName() + ")";
+				m_functions.push_back(std::make_shared<Comp>(func_name, GetP2Func(m_num1), GetP2Func(m_num2)));
+			}
 			break;
 		}
 
 		case DEL:
 		{
 			std::cin >> m_num1;
-			m_functions.erase(m_functions.begin() + m_num1);
+			if (CheckValid(m_num1, 0))
+				m_functions.erase(m_functions.begin() + m_num1);
 			break;
 		}
 
@@ -150,5 +165,15 @@ std::shared_ptr<Function> Calculator::GetP2Func(int num) const
 	std::shared_ptr<Function> ptr;
 	ptr = m_functions[num];
 	return ptr;
+}
+
+bool Calculator::CheckValid(int num1, int num2)
+{
+	if (!(num1 < m_functions.size() && num2 < m_functions.size()))
+	{
+		std::cout << " Invalid input, try again \n";
+		return false;
+	}
+	return true;
 }
 
