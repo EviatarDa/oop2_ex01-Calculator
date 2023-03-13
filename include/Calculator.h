@@ -20,4 +20,7 @@ private:
 	int m_num1;
 	int m_num2;
 	enum Functions String2Enum() const;
+
+	//functions:
+	void PrintHelp() const;
 };
