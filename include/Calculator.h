@@ -3,7 +3,7 @@
 #include <vector>
 #include "Function.h"
 #include <string>
-enum Functions { EVAL, SUBSTR, MUL, ADD, COMP, DEL, HELP, EXIT };
+enum Functions { EVAL, SUBSTR, MUL, ADD, COMP, DEL, HELP, EXIT, BAD };
 
 class Calculator
 {
@@ -22,6 +22,6 @@ private:
 
 	//functions:
 	void PrintHelp() const;
-	std::shared_ptr<Function> FindFunc(int) const;
+	std::shared_ptr<Function> GetP2Func(int) const;
 
 };

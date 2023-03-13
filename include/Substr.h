@@ -4,7 +4,7 @@
 class Substr :public Function
 {
 public:
-	Substr(std::string, int, int, int);
+	Substr(std::string, int, int);
 	void Operation(std::string str);
 	std::string ChangedString(std::string str);
 

@@ -4,7 +4,7 @@
 class SwapCase :public Function
 {
 public:
-	SwapCase(std::string, int);
+	SwapCase(std::string);
 	void Operation(std::string str);
 	std::string ChangedString(std::string str);
 

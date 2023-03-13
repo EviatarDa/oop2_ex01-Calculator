@@ -1,14 +1,14 @@
 #pragma once 
 #include "Add.h"
 
-Add::Add(std::string name, int num, std::shared_ptr<Function> ptr1, std::shared_ptr<Function> ptr2)
-	:Function(name, num), m_ptr2func1(ptr1), m_ptr2func2(ptr2)
+Add::Add(std::string name, std::shared_ptr<Function> ptr1, std::shared_ptr<Function> ptr2)
+	:Function(name) , m_ptr2func1(ptr1), m_ptr2func2(ptr2)
 {
 }
 
 void Add::Operation(std::string str)
 {
-	std::cout << "(" << m_ptr2func1->GetName() << " + " << m_ptr2func2->GetName() << ") (" << str << ") = " << ChangedString(str) << std::endl;
+	std::cout << m_name << " (" << str << ") = " << ChangedString(str) << std::endl;
 
 }
 

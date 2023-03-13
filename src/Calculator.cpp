@@ -7,14 +7,13 @@
 #include "Mul.h"
 #include "Add.h"
 #include "Comp.h"
-#include "Del.h"
 
 
 Calculator::Calculator()
 {
-	m_functions.push_back(std::make_shared<Id>("Id",0));
-	m_functions.push_back(std::make_shared<SwapCase>("SwapCase",1));
-	m_functions.push_back(std::make_shared<Reverse>("Reverse",2));
+	m_functions.push_back(std::make_shared<Id>("Id"));
+	m_functions.push_back(std::make_shared<SwapCase>("SwapCase"));
+	m_functions.push_back(std::make_shared<Reverse>("Reverse"));
 }
 
 void Calculator::run()
@@ -40,38 +39,38 @@ void Calculator::run()
 		{
 			std::cin >> m_num1 >> m_num2;
 			std::string func_name = "Substr " + std::to_string(m_num1) + ", " + std::to_string(m_num2);
-			m_functions.push_back(std::make_shared<Substr>(func_name, m_functions.size() , m_num1, m_num2));
+			m_functions.push_back(std::make_shared<Substr>(func_name , m_num1, m_num2));
 			break;
 		}
 
 		case MUL:
 		{
 			std::cin >> m_num1 >> m_num2;
-			std::string func_name =  "(" + FindFunc(m_num2)->GetName() +  " * " + std::to_string(m_num1) + ")";
-			m_functions.push_back(std::make_shared<Mul>(func_name, m_functions.size(), m_num1, FindFunc(m_num2)));
+			std::string func_name =  "(" + GetP2Func(m_num2)->GetName() +  " * " + std::to_string(m_num1) + ")";
+			m_functions.push_back(std::make_shared<Mul>(func_name, m_num1, GetP2Func(m_num2)));
 			break;
 		}
 
 		case ADD:
 		{
 			std::cin >> m_num1 >> m_num2;
-			std::string func_name = "(" + FindFunc(m_num1)->GetName() + " + " + FindFunc(m_num2)->GetName() + ")";
-			m_functions.push_back(std::make_shared<Add>(func_name, m_functions.size(), FindFunc(m_num1), FindFunc(m_num2)));
+			std::string func_name = "(" + GetP2Func(m_num1)->GetName() + " + " + GetP2Func(m_num2)->GetName() + ")";
+			m_functions.push_back(std::make_shared<Add>(func_name, GetP2Func(m_num1), GetP2Func(m_num2)));
 			break;
 		}
 
 		case COMP:
 		{
 			std::cin >> m_num1 >> m_num2;
-			std::string func_name = "(" + FindFunc(m_num1)->GetName() + " -> " + FindFunc(m_num2)->GetName() + ")";
-			m_functions.push_back(std::make_shared<Comp>(func_name, m_functions.size(), FindFunc(m_num1), FindFunc(m_num2)));
+			std::string func_name = "(" + GetP2Func(m_num1)->GetName() + " -> " + GetP2Func(m_num2)->GetName() + ")";
+			m_functions.push_back(std::make_shared<Comp>(func_name, GetP2Func(m_num1), GetP2Func(m_num2)));
 			break;
 		}
 
 		case DEL:
 		{
 			std::cin >> m_num1;
-			FindFunc(m_num1) = nullptr;
+			m_functions.erase(m_functions.begin() + m_num1);
 			break;
 		}
 
@@ -82,6 +81,10 @@ void Calculator::run()
 		case EXIT:
 			m_exit = true;
 			std::cout << "Goodbye\n";
+			break;
+
+		case BAD:
+			std::cout << " Bad input, try again \n";
 			break;
 
 		default:
@@ -95,7 +98,7 @@ void Calculator::PrintFunctions()
 {
 	for (int index = 0; index < m_functions.size(); index++)
 	{
-		std::cout << m_functions[index]->GetNumber() << ". " << m_functions[index]->GetName() << std::endl;
+		std::cout << index << ". " << m_functions[index]->GetName() << std::endl;
 	}
 	std::cout << "\n\nEnter command ('help' for the list of available commands): ";
 }
@@ -118,6 +121,8 @@ enum Functions Calculator::String2Enum() const
 		return HELP;
 	else if (m_operation == "exit")
 		return EXIT;
+	else
+		return BAD;
 }
 
 void Calculator::PrintHelp() const
@@ -140,17 +145,10 @@ void Calculator::PrintHelp() const
 		" * exit - exit the program\n\n\n";
 }
 
-std::shared_ptr<Function> Calculator::FindFunc(int num) const
+std::shared_ptr<Function> Calculator::GetP2Func(int num) const
 {
 	std::shared_ptr<Function> ptr;
-	for (int index = 0; index < m_functions.size(); index++)
-	{
-		if (m_functions[index]->GetNumber() == num)
-		{
-			ptr = m_functions[index];
-			return ptr;
-		}
-	}
-	
+	ptr = m_functions[num];
+	return ptr;
 }
 

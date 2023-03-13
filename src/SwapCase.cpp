@@ -1,14 +1,14 @@
 #pragma once
 #include "SwapCase.h"
 
-SwapCase::SwapCase(std::string name, int num)
-	:Function(name, num)
+SwapCase::SwapCase(std::string name)
+	:Function(name)
 {
 }
 
 void SwapCase::Operation(std::string str)
 {
-	std::cout << "SwapCase(" << str << ") = " << ChangedString(str) << std::endl;
+	std::cout << m_name << " (" << str << ") = " << ChangedString(str) << std::endl;
 }
 
 std::string SwapCase::ChangedString(std::string str)

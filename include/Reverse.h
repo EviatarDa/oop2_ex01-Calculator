@@ -4,7 +4,7 @@
 class Reverse :public Function
 {
 public:
-	Reverse(std::string, int);
+	Reverse(std::string);
 	void Operation(std::string str);
 	std::string ChangedString(std::string str);
 

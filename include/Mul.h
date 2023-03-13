@@ -4,7 +4,7 @@
 class Mul :public Function
 {
 public:
-	Mul(std::string, int, int, std::shared_ptr<Function>);
+	Mul(std::string, int, std::shared_ptr<Function>);
 	void Operation(std::string str);
 	std::string ChangedString(std::string str);
 
