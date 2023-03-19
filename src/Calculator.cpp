@@ -11,6 +11,7 @@
 
 Calculator::Calculator()
 {
+	//the basic calculator functions
 	m_functions.push_back(std::make_shared<Id>("id"));
 	m_functions.push_back(std::make_shared<SwapCase>("swapCase"));
 	m_functions.push_back(std::make_shared<Reverse>("reverse"));
@@ -18,6 +19,7 @@ Calculator::Calculator()
 
 void Calculator::run()
 {
+	//run lpoop
 	while (!m_exit)
 	{
 		std::cout << "\nList of available string operations: " << std::endl;
@@ -106,8 +108,9 @@ void Calculator::run()
 	}
 }
 
-void Calculator::PrintFunctions()
+void Calculator::PrintFunctions() const
 {
+	//print menu
 	for (int index = 0; index < m_functions.size(); index++)
 	{
 		std::cout << index << ". " << m_functions[index]->GetName() << std::endl;
@@ -117,6 +120,7 @@ void Calculator::PrintFunctions()
 
 enum Functions Calculator::String2Enum() const
 {
+	//convert string to enum
 	if (m_operation == "eval")
 		return EVAL;
 	else if (m_operation == "substr")
@@ -139,6 +143,7 @@ enum Functions Calculator::String2Enum() const
 
 void Calculator::PrintHelp() const
 {
+	//help text
 	std::cout << "The available commands are:\n\n"
 		" * eval(uate) num ... - compute the result of function #num on the following\n"
 		"   set(s); each set is prefixed with the count of numbers to read\n\n"
@@ -164,7 +169,7 @@ std::shared_ptr<Function> Calculator::GetP2Func(int num) const
 	return ptr;
 }
 
-bool Calculator::CheckValid(int num1, int num2)
+bool Calculator::CheckValid(int num1, int num2) const
 {
 	if (!(num1 < m_functions.size() && num2 < m_functions.size()))
 	{
