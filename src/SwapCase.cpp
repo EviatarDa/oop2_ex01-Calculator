@@ -8,7 +8,7 @@ SwapCase::SwapCase(std::string name)
 
 void SwapCase::Operation(std::string str)
 {
-	std::cout << m_name << " (" << str << ") = " << ChangedString(str) << std::endl;
+	std::cout << m_name << "(" << str << ") = " << ChangedString(str) << std::endl;
 }
 
 std::string SwapCase::ChangedString(std::string str)

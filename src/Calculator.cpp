@@ -11,9 +11,9 @@
 
 Calculator::Calculator()
 {
-	m_functions.push_back(std::make_shared<Id>("Id"));
-	m_functions.push_back(std::make_shared<SwapCase>("SwapCase"));
-	m_functions.push_back(std::make_shared<Reverse>("Reverse"));
+	m_functions.push_back(std::make_shared<Id>("id"));
+	m_functions.push_back(std::make_shared<SwapCase>("swapCase"));
+	m_functions.push_back(std::make_shared<Reverse>("reverse"));
 }
 
 void Calculator::run()
@@ -40,11 +40,8 @@ void Calculator::run()
 		case SUBSTR:
 		{
 			std::cin >> m_num1 >> m_num2;
-			if (CheckValid(m_num1, m_num2))
-			{
-				std::string func_name = "Substr " + std::to_string(m_num1) + ", " + std::to_string(m_num2);
-				m_functions.push_back(std::make_shared<Substr>(func_name, m_num1, m_num2));
-			}
+			std::string func_name = "substr_" + std::to_string(m_num1) + "_" + std::to_string(m_num2);
+			m_functions.push_back(std::make_shared<Substr>(func_name, m_num1, m_num2));
 			break;
 		}
 
@@ -53,7 +50,7 @@ void Calculator::run()
 			std::cin >> m_num1 >> m_num2;
 			if (CheckValid(m_num1, m_num2))
 			{
-				std::string func_name = "(" + GetP2Func(m_num2)->GetName() + " * " + std::to_string(m_num1) + ")";
+				std::string func_name = GetP2Func(m_num2)->GetName() + " * " + std::to_string(m_num1);
 				m_functions.push_back(std::make_shared<Mul>(func_name, m_num1, GetP2Func(m_num2)));
 			}
 			break;
@@ -64,7 +61,7 @@ void Calculator::run()
 			std::cin >> m_num1 >> m_num2;
 			if (CheckValid(m_num1, m_num2))
 			{
-				std::string func_name = "(" + GetP2Func(m_num1)->GetName() + " + " + GetP2Func(m_num2)->GetName() + ")";
+				std::string func_name = GetP2Func(m_num1)->GetName() + " + " + GetP2Func(m_num2)->GetName();
 				m_functions.push_back(std::make_shared<Add>(func_name, GetP2Func(m_num1), GetP2Func(m_num2)));
 			}
 			break;
@@ -75,7 +72,7 @@ void Calculator::run()
 			std::cin >> m_num1 >> m_num2;
 			if (CheckValid(m_num1, m_num2))
 			{
-				std::string func_name = "(" + GetP2Func(m_num1)->GetName() + " -> " + GetP2Func(m_num2)->GetName() + ")";
+				std::string func_name = "(" + GetP2Func(m_num1)->GetName() + ") -> (" + GetP2Func(m_num2)->GetName() + ")";
 				m_functions.push_back(std::make_shared<Comp>(func_name, GetP2Func(m_num1), GetP2Func(m_num2)));
 			}
 			break;

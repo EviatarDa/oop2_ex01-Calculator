@@ -8,7 +8,7 @@ Comp::Comp(std::string name, std::shared_ptr<Function> ptr1, std::shared_ptr<Fun
 
 void Comp::Operation(std::string str)
 {
-	std::cout << m_name << " (" << str << ") = " << ChangedString(str) << std::endl;
+	std::cout << "(" << m_name << ")" << "(" << str << ") = " << ChangedString(str) << std::endl;
 
 }
 

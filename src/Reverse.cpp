@@ -9,7 +9,7 @@ Reverse::Reverse(std::string name)
 void Reverse::Operation(std::string str)
 {
 
-	std::cout <<  m_name << " (" << str << ") = " << ChangedString(str) << std::endl;
+	std::cout <<  m_name << "(" << str << ") = " << ChangedString(str) << std::endl;
 }
 
 std::string Reverse::ChangedString(std::string str)

@@ -8,7 +8,7 @@ Mul::Mul(std::string name, int num1, std::shared_ptr<Function> ptr)
 
 void Mul::Operation(std::string str)
 {
-	std::cout << m_name << " (" << str << ") = " << ChangedString(str) << std::endl;
+	std::cout << "(" << m_name << ")" << "(" << str << ") = " << ChangedString(str) << std::endl;
 }
 
 std::string Mul::ChangedString(std::string str)

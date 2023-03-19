@@ -8,7 +8,7 @@ Substr::Substr(std::string name, int num1, int num2)
 
 void Substr::Operation(std::string str)
 {
-	std::cout << m_name << " (" << str << ") = " << ChangedString(str) << std::endl;
+	std::cout << m_name << "(" << str << ") = " << ChangedString(str) << std::endl;
 }
 
 std::string Substr::ChangedString(std::string str)
